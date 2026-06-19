@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Космический Трейдер</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="glass" id="app">
+        <!-- Заголовок -->
+        <div class="header">
+            <h1>🚀 Трейдер</h1>
+            <span class="badge">● LIVE</span>
+        </div>
+
+        <!-- Статистика (мини) -->
+        <div class="stats-mini">
+            <div class="stat-item">
+                <span class="stat-label">💰</span>
+                <span class="stat-value" id="cashDisplay">1000</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">📦</span>
+                <span class="stat-value" id="cargoDisplay">0/20</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">📈</span>
+                <span class="stat-value" id="tradeCount">0</span>
+            </div>
+        </div>
+
+        <!-- ТАБЫ -->
+        <div class="tabs">
+            <button class="tab active" data-tab="market">📊 Рынок</button>
+            <button class="tab" data-tab="inventory">🎒 Инвентарь</button>
+            <button class="tab" data-tab="stats">📈 Статистика</button>
+        </div>
+
+        <!-- КОНТЕНТ ТАБОВ -->
+        <div class="tab-content">
+            <!-- Таб 1: Рынок -->
+            <div class="tab-pane active" id="tabMarket">
+                <!-- График цен -->
+                <div class="chart-section">
+                    <div class="chart-header">
+                        <span><span class="live-dot"></span>Свечи (3 мин)</span>
+                        <span id="timeLabel">Обновление через 2:45</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="candleChart" width="380" height="140"></canvas>
+                    </div>
+                </div>
+
+                <!-- Список товаров -->
+                <div class="items" id="itemsContainer"></div>
+
+                <!-- Кнопка риска -->
+                <button class="risk-btn" id="riskBtn">
+                    <span class="emoji-big">💀</span> Пролететь через туманность
+                    <span class="sub">x2 или 0 · 50% удачи</span>
+                </button>
+            </div>
+
+            <!-- Таб 2: Инвентарь -->
+            <div class="tab-pane" id="tabInventory">
+                <div class="inventory-stats">
+                    <div class="inv-stat">
+                        <span>Всего предметов</span>
+                        <strong id="invTotal">0</strong>
+                    </div>
+                    <div class="inv-stat">
+                        <span>Свободно</span>
+                        <strong id="invFree">20</strong>
+                    </div>
+                </div>
+                <div class="inventory-grid" id="inventoryGrid"></div>
+            </div>
+
+            <!-- Таб 3: Статистика -->
+            <div class="tab-pane" id="tabStats">
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <span class="stat-icon">💰</span>
+                        <div>
+                            <div class="stat-card-label">Всего заработано</div>
+                            <div class="stat-card-value" id="statEarned">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">🔄</span>
+                        <div>
+                            <div class="stat-card-label">Сделок</div>
+                            <div class="stat-card-value" id="statTrades">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">💀</span>
+                        <div>
+                            <div class="stat-card-label">Рискнул</div>
+                            <div class="stat-card-value" id="statRisks">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon">🏆</span>
+                        <div>
+                            <div class="stat-card-label">Лучшая сделка</div>
+                            <div class="stat-card-value" id="statBest">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-label">
+                        <span>Уровень трейдера</span>
+                        <span id="levelDisplay">Новичок</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="levelProgress" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Тост -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
